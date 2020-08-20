@@ -30,7 +30,7 @@ const ProfileComponent: FC<ProfileProps> = memo(({ data, onLike }) => {
       <div className="footer">
         <div className="item">
           <p>{profile_view.toLocaleString()}</p>
-          <p>Profile Views</p>
+          <p>Profile Views 111</p>
         </div>
         <div className="item">
           <p>{website_view.toLocaleString()}</p>
