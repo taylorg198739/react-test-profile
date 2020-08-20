@@ -13,7 +13,7 @@ jobs:
       - name: Move issue card to in progress
         run: |        
           curl --request POST \
-            --url https://api.zenhub.com/p2/workspaces/${{ secrets.ZH_WORKSPACE_ID }}/repositories/${{ secrets.REPO_ID }}/issues/${{ ISSUE_NUMBER }}/moves \
+            --url https://api.zenhub.com/p2/workspaces/${{ secrets.ZH_WORKSPACE_ID }}/repositories/${{ secrets.REPO_ID }}/issues/${ISSUE_NUMBER}/moves \
             --header 'X-Authentication-Token: ${{ secrets.ZH_TOKEN }}' \
             --header 'content-type: application/json' \
             --data '{
