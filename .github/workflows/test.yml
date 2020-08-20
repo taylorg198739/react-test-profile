@@ -1,0 +1,20 @@
+on:
+- push
+jobs:
+  create_commit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get issue number
+      run: ISSUE_NUMBER=${GITHUB_REF#*/}
+           ISSUE_NUMBER=${ISSUE_NUMBER%%/*}
+           echo $ISSUE_NUMBER
+    - name: Move issue card to in progress
+      run: |        
+        curl --request POST \
+        --url https://api.zenhub.com/p2/workspaces/${{ secrets.ZH_WORKSPACE_ID }}/repositories/${{ secrets.REPO_ID }}/issues/${{ ISSUE_NUMBER }}/moves
+        --header 'X-Authentication-Token: Bearer ${{ secrets.ZH_TOKEN }}' \
+        --header 'content-type: application/json' \
+        --data '{
+          "pipeline_id": "Automated issue for commit: ${{ secrets.ZH_IN_PROGRESS_ID }}",
+          "position": "top"
+          }'
