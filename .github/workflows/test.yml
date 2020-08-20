@@ -13,8 +13,14 @@ jobs:
       - name: Extract branch name
         if: github.event_name != 'pull_request'
         shell: bash
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${echo ${GITHUB_REF#refs/heads/}%%/*})"
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
+      
+      - name: Extract issue number
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: echo "::set-env name=ISSUE_NUMBER::$(echo ${BRANCH_NAME%%/*})"
+        id: extract_issue_number
 
       - name: Move issue card to in progress
         run: |        
