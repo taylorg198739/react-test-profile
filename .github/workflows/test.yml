@@ -23,6 +23,6 @@ jobs:
           --header 'X-Authentication-Token: a24e4255ad936e60fd0af1fdb7054c3f750d16a983c65f60691896e2523a89868917ae7c1e9e4856' \
           --header 'content-type: application/json' \
           --data '{
-            "pipeline_id": "Automated issue for commit: ${{ secrets.ZH_IN_PROGRESS_ID }}",
+            "pipeline_id": "Z2lkOi8vcmFwdG9yL1BpcGVsaW5lLzIxODg5MzI",
             "position": "top"
             }'
