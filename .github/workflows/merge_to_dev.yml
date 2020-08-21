@@ -3,6 +3,8 @@ name: merge into dev
 on:
   pull_request:
     types: [closed]
+    branches:
+      - 'develop'
 
 jobs:
   merge_into_dev:
