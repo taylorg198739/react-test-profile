@@ -1,14 +1,12 @@
 on:
-- push
+  push:
+    branches:
+      - '!develop'
+      - '!master'
 jobs:
-  create_commit:
+  push_new_branch:
     runs-on: ubuntu-latest
     steps:
-#     - name: Get issue number
-#       run: |
-#           ISSUE_NUMBER=${GITHUB_REF#*/}
-#           ISSUE_NUMBER=${ISSUE_NUMBER%%/*}
-#           echo $ISSUE_NUMBER
 
       - name: Extract branch name
         if: github.event_name != 'pull_request'
@@ -32,3 +30,5 @@ jobs:
                 "pipeline_id": "${{ secrets.ZH_IN_PROGRESS_ID }}",
                 "position": "top"
               }'
+
+
