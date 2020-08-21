@@ -1,12 +1,13 @@
-name: push new branch
+name: create new branch
 
 on:
   push:
     branches:
       - '!develop'
       - '!master'
+
 jobs:
-  push_new_branch:
+  create_new_branch:
     runs-on: ubuntu-latest
     steps:
 
