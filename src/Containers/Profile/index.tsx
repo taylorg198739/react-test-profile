@@ -16,7 +16,7 @@ const ProfileComponent: FC<ProfileProps> = memo(({ data, onLike }) => {
   return (
     <div className="profile">
       <div className="header">
-        <span className="title">Developer Profile 11</span>
+        <span className="title">Developer Profile 11-2</span>
         <button onClick={() => onLike(_id, !isLiked)}>
           <img src={`./assets/images/heart-${isLiked ? 'fill' : 'empty'}.svg`} alt="❤" />
         </button>
