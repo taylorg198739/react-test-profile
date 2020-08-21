@@ -1,10 +1,7 @@
 name: create new branch
 
-on:
-  push:
-    branches:
-      - '!develop'
-      - '!master'
+on: 
+- push
 
 jobs:
   create_new_branch:
