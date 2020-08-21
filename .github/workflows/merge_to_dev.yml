@@ -1,3 +1,5 @@
+name: merge into dev
+
 on:
   pull_request:
     types: [closed]
