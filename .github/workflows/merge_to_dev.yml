@@ -11,7 +11,7 @@ jobs:
 
       - name: Extract branch name
         shell: bash
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${github.base_ref})"
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${{ github.base_ref }})"
         id: extract_branch
       
       - name: Extract issue number
