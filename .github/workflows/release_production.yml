@@ -1,11 +1,12 @@
-name: merge into dev
+name: release production
 
 on:
-  pull_request:
-    types: [closed]
+  release:
+    # Only use the types keyword to narrow down the activity types that will trigger your workflow.
+    types: [published]
 
 jobs:
-  merge_into_dev:
+  release_production:
     runs-on: ubuntu-latest
     steps:
 
@@ -22,12 +23,11 @@ jobs:
       - name: Move issue card to in progress
         run: |        
           curl --request POST \
-            --url https://api.zenhub.com/p2/workspaces/${{ secrets.ZH_WORKSPACE_ID }}/repositories/${{ secrets.REPO_ID }}/issues/${ISSUE_NUMBER}/moves \
+            --url https://api.zenhub.com/p1/repositories/${{ secrets.REPO_ID }}/epics/${ISSUE_NUMBER}/update_issues \
             --header 'X-Authentication-Token: ${{ secrets.ZH_TOKEN }}' \
             --header 'content-type: application/json' \
             --data '{
-                "pipeline_id": "${{ secrets.ZH_QA_ID }}",
-                "position": "top"
+                "remove_issues": [{ "repo_id": "${{ secrets.REPO_ID }}", "issue_number": "${ISSUE_NUMBER}" }]
               }'
 
 
