@@ -1,9 +1,12 @@
 name: release production
 
 on:
-  release:
-    # Only use the types keyword to narrow down the activity types that will trigger your workflow.
-    types: [published]
+  # release:
+  #   # Only use the types keyword to narrow down the activity types that will trigger your workflow.
+  #   types: [published]
+  push:
+    branches:
+      - 'master'
 
 jobs:
   release_production:
@@ -12,7 +15,7 @@ jobs:
 
       - name: Extract branch name
         shell: bash
-        run: echo "::set-env name=BRANCH_NAME::$(echo ${{ github.head_ref }})"
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
       
       - name: Extract issue number
